@@ -19,8 +19,9 @@
 
 
     - name: copy conf file
-      src: nginx.conf
-      dest: /etc/nginx/default.d/roboshop.conf
+      ansible.builtin.file:
+       src: nginx.conf
+       dest: /etc/nginx/default.d/roboshop.conf
 
     - name: download and extract
       ansible.builtin.unarchive:
