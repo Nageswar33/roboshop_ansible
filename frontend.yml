@@ -24,9 +24,9 @@
 
     - name: download and extract content file
       ansible.builtin.unarchive:
-      src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-      dest: /usr/share/nginx/html
-      remote_src: yes
+       src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+       dest: /usr/share/nginx/html
+       remote_src: yes
 
     - name: enable nginx
       ansible.builtin.systemd:
