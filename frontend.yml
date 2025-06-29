@@ -7,6 +7,11 @@
         name: nginx
         state: installed
 
+    - name: copy conf file
+      ansible.builtin.copy:
+        src: nginx.conf
+        dest: /etc/nginx/default.d/roboshop.conf
+
     - name: clean old content
       ansible.builtin.file:
         path: /usr/share/nginx/html
@@ -18,17 +23,16 @@
         state: directory
 
 
-    - name: copy conf file
-      ansible.builtin.copy:
-       src: nginx.conf
-       dest: /etc/nginx/default.d/roboshop.conf
-
     - name: download and extract
       ansible.builtin.unarchive:
         src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
         dest: /usr/share/nginx/html
         remote_src: yes
 
-
+    - name: restart it
+        ansible.builtin.systemd:
+          name: nginx
+          state: restarted
+          enabled: yes
 
 
