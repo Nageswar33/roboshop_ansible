@@ -37,7 +37,7 @@
         name: catalogue
         state: restarted
         enable: true
-        deamon-reload: yes
+        daemon-reload: yes
 
 
 
