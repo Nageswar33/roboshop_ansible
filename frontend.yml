@@ -7,11 +7,7 @@
         name: nginx
         state: installed
 
-    - name: restart nginx
-      ansible.builtin.systemd:
-        name: nginx
-        state: restarted
-        enabled: yes
+
 
     - name: copy conf file
       ansible.builtin.copy:
@@ -35,5 +31,10 @@
         dest: /usr/share/nginx/html
         remote_src: yes
 
+    - name: restart nginx
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+        enabled: yes
 
 
