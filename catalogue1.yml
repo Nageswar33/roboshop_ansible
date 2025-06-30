@@ -34,7 +34,7 @@
 
     - name: systemd reload
       ansible.builtin.systemd:
-        name: catalogue
+        name: catalogue.service
         state: restarted
         enabled: true
         daemon_reload: yes
