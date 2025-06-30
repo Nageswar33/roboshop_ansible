@@ -1,17 +1,19 @@
 - name: copy mongo repo
-   hosts: all
-   become: true
-   ansible.builtin.copy:
-    src: mongo.repo
-    dest: /etc/yum.repos.d/mongo.repo
+  hosts: all
+  become: true
+  tasks:
+    - name: copy mongodb repo
+      ansible.builtin.copy:
+       src: mongo.repo
+       dest: /etc/yum.repos.d/mongo.repo
 
-- name: install mongodb
-   ansible.builtin.yum:
-    name: mongodb-org
-    state: installed
+    - name: install mongodb
+      ansible.builtin.yum:
+       name: mongodb-org
+       state: installed
 
-- name: restart mongodb
-   ansible.builtin.systemd:
-    name: mongod
-    state: restarted
-    enabled: true
+    - name: restart mongodb
+      ansible.builtin.systemd:
+       name: mongod
+       state: restarted
+       enabled: true
