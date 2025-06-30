@@ -29,6 +29,8 @@
 
     - name: load the dependencies
       ansible.builtin.shell: npm install
+      args:
+      chdir: /app
 
     - name: systemd reload
       ansible.builtin.systemd:
